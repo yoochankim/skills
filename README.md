@@ -1,2 +1,2 @@
-# skils
+# skills
 Project management skills
