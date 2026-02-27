@@ -20,7 +20,7 @@ Transforms Google Meet transcripts (Gemini-generated MD files) into structured m
 
 ### Step 1: Discover & Select Transcript Files
 
-1. Search the project's `Meeting notes/` folder for files matching `*회의록.md` pattern (using Glob)
+1. Search the project's `Meeting notes/` folder for files matching `*meeting-notes.md` pattern (using Glob)
 2. **Always** present the list of found files to the user via AskUserQuestion and let them choose which file(s) to process
 3. Never auto-select, even if only one file is found
 
