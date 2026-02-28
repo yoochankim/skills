@@ -17,7 +17,7 @@ Transforms markdown meeting transcripts into structured summaries with summary, 
 ### Installation
 
 ```bash
-npx skills install https://github.com/yoochankim/task-manager/tree/main/skills/md-meeting-notes
+npx skills add https://github.com/yoochankim/task-manager --skill md-meeting-notes
 ```
 
 ## Adding a New Skill
