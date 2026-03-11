@@ -90,7 +90,7 @@ Show all todos (open and done) for a specific person.
 
 ---
 
-## Heartbeat Alerting
+## Scheduled Alerting
 
 During heartbeat cycles, check for overdue or upcoming tasks.
 
@@ -118,5 +118,5 @@ so overdue alerts fire automatically without manual prompting.
 
 - **File not found:** Notify the user — `todos.md` doesn't exist yet. Direct them to run `action-item-extractor` or add a task manually
 - **Ambiguous match on Complete:** Show matching items, ask user to confirm which one
-- **No deadlines set (all TBD):** Heartbeat check skips alerting silently
+- **No deadlines set (all TBD):** Scheduled check skips alerting silently
 - **Malformed todos.md:** Notify the user and ask whether to overwrite with a clean template or attempt repair
