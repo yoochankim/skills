@@ -92,7 +92,7 @@ Show all todos (open and done) for a specific person.
 
 ## Scheduled Alerting
 
-During heartbeat cycles, check for overdue or upcoming tasks.
+On each scheduled run, check for overdue or upcoming tasks.
 
 **Steps:**
 1. Read `todos.md`
@@ -107,7 +107,7 @@ During heartbeat cycles, check for overdue or upcoming tasks.
    Due soon ({N}):
    - [{Owner}] {Task} — due {date}
    ```
-4. If nothing flagged: no alert needed (HEARTBEAT_OK)
+4. If nothing flagged: no alert needed, exit silently
 
 **Tip:** Configure your agent to run this skill periodically
 so overdue alerts fire automatically without manual prompting.
