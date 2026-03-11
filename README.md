@@ -1,45 +1,62 @@
-# Task Manager
+# task-manager
 
-A project management agent that summarizes meetings, tracks action items, and syncs with external tools.
+Project management skills for AI agents — meeting notes, action item tracking, and task management.
 
-## Overview
+## Skills
 
-| Component | Description |
-|-----------|-------------|
-| [Agent](./agent.md) | Project management agent definition |
-| [Skills](./skills.md) | Reusable skill modules |
-| [MCPs](./MCPs.md) | External service integrations |
+| Skill | Command | Description |
+|-------|---------|-------------|
+| [meeting-transcript-notes](./skills/meeting-transcript-notes) | `/meeting-transcript-notes` | Transform meeting transcripts into structured notes |
+| [action-item-extractor](./skills/action-item-extractor) | `/action-item-extractor` | Extract action items from meeting notes into todos.md |
+| [task-tracker](./skills/task-tracker) | `/task-tracker` | Manage todos.md — list, complete, query, and alert on tasks |
 
-## Compatibility
+## How They Work Together
 
-Built and tested on [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Also compatible with other AI coding agents that support the skills format.
-
-### Recommended Models
-
-| Model | Best For |
-|-------|----------|
-| Claude Sonnet 4.6 | Daily use — fast and cost-effective |
-| Claude Opus 4.6 | Complex tasks requiring deeper reasoning |
-
-## Quick Start
-
-Install the meeting notes skill:
-
-```bash
-npx skills add https://github.com/yoochankim/task-manager --skill md-meeting-notes
+```
+meeting transcript
+      ↓
+meeting-transcript-notes   →   structured notes (summary, decisions, action items)
+                                          ↓
+                               action-item-extractor   →   todos.md
+                                                                ↓
+                                                        task-tracker (list / complete / alert)
 ```
 
-Then run `/md-meeting-notes` in your agent.
+## Installation
+
+Install all skills:
+
+```bash
+npx skills add https://github.com/yoochankim/task-manager
+```
+
+Install a single skill:
+
+```bash
+npx skills add https://github.com/yoochankim/task-manager --skill meeting-transcript-notes
+npx skills add https://github.com/yoochankim/task-manager --skill action-item-extractor
+npx skills add https://github.com/yoochankim/task-manager --skill task-tracker
+```
 
 ## Folder Structure
 
 ```
-task-manager/
-├── README.md
-├── agent.md
-├── skills.md
-├── MCPs.md
-└── skills/
-    └── md-meeting-notes/
-        └── SKILL.md
+~/
+├── meeting-notes/
+│   ├── inbox/      ← drop transcripts here
+│   ├── summary/    ← generated notes saved here
+│   └── archive/    ← processed originals moved here
+└── todos.md        ← managed by action-item-extractor & task-tracker
 ```
+
+## Compatibility
+
+Built and tested on [OpenClaw](https://openclaw.ai) and [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Also compatible with other AI agents that support the skills format.
+
+## Recommended Models
+
+| Model | Provider | Best For |
+|-------|----------|----------|
+| Claude Opus 4.6 | Anthropic | Complex tasks, best quality |
+| Claude Sonnet 4.6 | Anthropic | Daily use, recommended default |
+| Qwen 32B | Ollama | Local or budget option |
